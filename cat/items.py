@@ -16,3 +16,11 @@ class AdoptItem(scrapy.Item):
     desc = scrapy.Field();
     href = scrapy.Field();
     pass
+
+
+class AdoptInfo(scrapy.Item):
+    # define the fields for your item here like:
+    # name = scrapy.Field()
+    name = scrapy.Field();
+    address = scrapy.Field();
+    desc = scrapy.Field();

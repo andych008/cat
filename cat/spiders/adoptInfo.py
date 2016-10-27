@@ -30,7 +30,8 @@ class AdoptinfoSpider(scrapy.Spider):
             item['address'] = text[0]
             item['name'] = text[1]
             item['href'] = data.css('::attr(href)').extract()[0]
-            print(item)
+            
+            yield item
 
         # for data in response.css('p.ind_tit a::attr(href)'):
 
