@@ -15,7 +15,8 @@ class AdoptinfoSpider(scrapy.Spider):
     def get_alt(self, response):
         data = response.css('::attr(alt)')
         text = data.re('^【.*领养】')[0]
-        text2 = data.extract()[0]
+        # text = data.re('^【.*领养】')[0]
+        text2 = data.extract_first()#同data.extract()[0]
         return (text[1:text.rindex('领养】')], text2[text2.rindex('_')+1:len(text2)-1])
 
     def parse(self, response):
@@ -29,8 +30,8 @@ class AdoptinfoSpider(scrapy.Spider):
 
             item['address'] = text[0]
             item['name'] = text[1]
-            item['href'] = data.css('::attr(href)').extract()[0]
-            
+            item['href'] = data.css('::attr(href)').extract_first()
+
             yield item
 
         # for data in response.css('p.ind_tit a::attr(href)'):
