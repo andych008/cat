@@ -2,6 +2,7 @@
 import scrapy
 
 # scrapy runspider quotes_spider.py
+# scrapy crawl quotes --nolog -o quotes.json
 
 
 class QuotesSpider(scrapy.Spider):
@@ -10,7 +11,8 @@ class QuotesSpider(scrapy.Spider):
         'http://quotes.toscrape.com/tag/humor/',
     ]
     custom_settings = {
-        'LOG_LEVEL' : 'INFO'
+        'LOG_LEVEL' : 'ERROR',
+        'LOG_FILE' : 'hello.log'
     }
 
     def parse(self, response):
